@@ -97,24 +97,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: spacing.md,
-    paddingVertical: spacing.md,
+    paddingVertical: spacing.lg,
   },
   headerTitle: {
-    ...typography.h1,
+    ...typography.largeTitle,
   },
   headerSubtitle: {
     ...typography.body,
     marginTop: spacing.xs,
-  },
-  headerActions: {
-    flexDirection: 'row',
-    gap: spacing.sm,
-  },
-  iconButton: {
-    width: 44,
-    height: 44,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   content: {
     flex: 1,
@@ -126,7 +116,7 @@ const styles = StyleSheet.create({
     paddingTop: spacing.xxl * 2,
   },
   emptyTitle: {
-    ...typography.h2,
+    ...typography.title1,
     marginTop: spacing.lg,
     marginBottom: spacing.sm,
   },
@@ -139,24 +129,5 @@ const styles = StyleSheet.create({
   },
   bottomPadding: {
     height: 100,
-  },
-  fab: {
-    position: 'absolute',
-    bottom: spacing.lg,
-    right: spacing.lg,
-    width: 64,
-    height: 64,
-    borderRadius: 32,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 8,
-    elevation: 8,
-  },
-  fabButton: {
-    width: '100%',
-    height: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 });
