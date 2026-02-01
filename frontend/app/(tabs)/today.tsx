@@ -4,19 +4,16 @@ import {
   Text,
   StyleSheet,
   ScrollView,
-  TouchableOpacity,
   RefreshControl,
 } from 'react-native';
-import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { format } from 'date-fns';
-import { useApp } from '../contexts/AppContext';
-import { MedicationCard } from '../components/MedicationCard';
-import { MarkTakenModal } from '../components/MarkTakenModal';
-import { Button } from '../components/Button';
-import { useTheme, spacing, typography } from '../utils/theme';
-import { Medication } from '../utils/storage';
+import { useApp } from '../../contexts/AppContext';
+import { MedicationCard } from '../../components/MedicationCard';
+import { MarkTakenModal } from '../../components/MarkTakenModal';
+import { useTheme, spacing, typography } from '../../utils/theme';
+import { Medication } from '../../utils/storage';
 
 export default function HomeScreen() {
   const router = useRouter();
