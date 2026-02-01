@@ -216,11 +216,20 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.md,
   },
   disclaimerText: {
-    ...typography.caption,
+    ...typography.caption1,
     fontSize: 12,
     marginLeft: spacing.sm,
     flex: 1,
     fontStyle: 'italic',
+  },
+  branding: {
+    alignItems: 'center',
+    marginTop: spacing.md,
+    paddingBottom: spacing.sm,
+  },
+  brandingText: {
+    ...typography.caption2,
+    fontSize: 11,
   },
   footer: {
     padding: spacing.lg,
