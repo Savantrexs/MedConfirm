@@ -12,7 +12,7 @@ export default function Index() {
   useEffect(() => {
     if (!loading) {
       if (onboardingComplete) {
-        router.replace('/home');
+        router.replace('/(tabs)/today');
       } else {
         router.replace('/onboarding');
       }
