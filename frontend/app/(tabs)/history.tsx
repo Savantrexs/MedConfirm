@@ -14,7 +14,6 @@ import { useTheme, spacing, borderRadius, typography, shadows } from '../../util
 import { groupLogsByDate, getDateLabel, formatDateTime } from '../../utils/medicationLogic';
 
 export default function HistoryScreen() {
-  const router = useRouter();
   const theme = useTheme();
   const { intakeLogs, medications, deleteIntakeLog } = useApp();
   const [selectedMedicationId, setSelectedMedicationId] = useState<string | null>(null);
