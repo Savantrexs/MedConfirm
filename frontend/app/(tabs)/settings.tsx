@@ -327,9 +327,15 @@ const styles = StyleSheet.create({
     marginBottom: spacing.sm,
   },
   disclaimer: {
-    ...typography.caption,
+    ...typography.caption1,
     fontSize: 12,
     fontStyle: 'italic',
+    marginTop: spacing.sm,
+  },
+  branding: {
+    ...typography.caption2,
+    fontSize: 11,
+    marginTop: spacing.md,
   },
   bottomPadding: {
     height: spacing.xxl,
