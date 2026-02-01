@@ -15,9 +15,9 @@ import { MarkTakenModal } from '../../components/MarkTakenModal';
 import { useTheme, spacing, typography } from '../../utils/theme';
 import { Medication } from '../../utils/storage';
 
-export default function HomeScreen() {
+export default function TodayScreen() {
   const theme = useTheme();
-  const { medications, intakeLogs, refreshData, loading } = useApp();
+  const { medications, intakeLogs, refreshData } = useApp();
   const [selectedMedication, setSelectedMedication] = useState<Medication | null>(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
