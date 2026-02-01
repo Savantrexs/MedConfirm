@@ -7,12 +7,11 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
-import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
-import { useApp } from '../contexts/AppContext';
-import { useTheme, spacing, borderRadius, typography, shadows } from '../utils/theme';
-import { groupLogsByDate, getDateLabel, formatDateTime } from '../utils/medicationLogic';
+import { useApp } from '../../contexts/AppContext';
+import { useTheme, spacing, borderRadius, typography, shadows } from '../../utils/theme';
+import { groupLogsByDate, getDateLabel, formatDateTime } from '../../utils/medicationLogic';
 
 export default function HistoryScreen() {
   const router = useRouter();
