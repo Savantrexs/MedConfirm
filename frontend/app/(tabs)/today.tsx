@@ -54,13 +54,19 @@ export default function HomeScreen() {
       <ScrollView
         style={styles.content}
         showsVerticalScrollIndicator={false}
-        refreshControl={\n          <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />\n        }
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
+        }
       >
         {activeMedications.length === 0 ? (
           <View style={styles.emptyState}>
             <Ionicons name="medical-outline" size={64} color={theme.textTertiary} />
-            <Text style={[styles.emptyTitle, { color: theme.text }]}>\n              No Medications Yet\n            </Text>
-            <Text style={[styles.emptyText, { color: theme.textSecondary }]}>\n              Tap Add tab to create your first medication\n            </Text>
+            <Text style={[styles.emptyTitle, { color: theme.text }]}>
+              No Medications Yet
+            </Text>
+            <Text style={[styles.emptyText, { color: theme.textSecondary }]}>
+              Tap Add tab to create your first medication
+            </Text>
           </View>
         ) : (
           <View style={styles.medicationsList}>
