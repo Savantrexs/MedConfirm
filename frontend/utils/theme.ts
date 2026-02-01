@@ -46,6 +46,8 @@ export const darkTheme = {
 export const highContrastTheme = {
   background: '#FFFFFF',
   surface: '#FFFFFF',
+  surfaceSolid: '#FFFFFF',
+  glassBackground: '#FFFFFF',
   primary: '#0000FF',
   primaryDark: '#000080',
   secondary: '#4169E1',
@@ -54,11 +56,12 @@ export const highContrastTheme = {
   danger: '#FF0000',
   text: '#000000',
   textSecondary: '#000000',
-  textLight: '#333333',
+  textTertiary: '#333333',
   border: '#000000',
   disabled: '#808080',
   overlay: 'rgba(0, 0, 0, 0.8)',
   cardShadow: 'rgba(0, 0, 0, 0.2)',
+  blur: '#FFFFFF',
 };
 
 export const useTheme = (darkMode: boolean = false, highContrast: boolean = false) => {
