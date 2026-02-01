@@ -48,11 +48,7 @@ export default function HistoryScreen() {
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: theme.background }]} edges={['top']}>
       <View style={[styles.header, { borderBottomColor: theme.border }]}>
-        <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
-          <Ionicons name="arrow-back" size={24} color={theme.text} />
-        </TouchableOpacity>
         <Text style={[styles.headerTitle, { color: theme.text }]}>History</Text>
-        <View style={styles.placeholder} />
       </View>
 
       {medications.length > 0 && (
