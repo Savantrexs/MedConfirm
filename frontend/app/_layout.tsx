@@ -15,10 +15,14 @@ export default function RootLayout() {
       >
         <Stack.Screen name="index" />
         <Stack.Screen name="onboarding" />
-        <Stack.Screen name="home" />
-        <Stack.Screen name="add-medication" />
-        <Stack.Screen name="history" />
-        <Stack.Screen name="settings" />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen 
+          name="add-medication" 
+          options={{ 
+            presentation: 'modal',
+            animation: 'slide_from_bottom',
+          }} 
+        />
       </Stack>
     </AppProvider>
   );
