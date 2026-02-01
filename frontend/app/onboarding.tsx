@@ -29,8 +29,8 @@ export default function OnboardingScreen() {
     await setOnboardingComplete();
     setLoading(false);
     
-    // Navigate to home
-    router.replace('/home');
+    // Navigate to tabs/today
+    router.replace('/(tabs)/today');
   };
 
   return (
