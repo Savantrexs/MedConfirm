@@ -14,7 +14,6 @@ import { useApp } from '../../contexts/AppContext';
 import { useTheme, spacing, borderRadius, typography, shadows } from '../../utils/theme';
 
 export default function SettingsScreen() {
-  const router = useRouter();
   const theme = useTheme();
   const { settings, updateSettings, intakeLogs, medications, unlockAdSlot } = useApp();
   const [exporting, setExporting] = useState(false);
