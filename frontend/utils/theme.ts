@@ -23,21 +23,24 @@ export const lightTheme = {
 };
 
 export const darkTheme = {
-  background: '#1A1A1A',
-  surface: '#2C2C2C',
-  primary: '#5DA5F5',
-  primaryDark: '#4A90E2',
-  secondary: '#8FC5E8',
-  success: '#6EC76E',
-  warning: '#F5BC5D',
-  danger: '#E66B68',
-  text: '#E8E8E8',
-  textSecondary: '#B0B0B0',
-  textLight: '#888888',
-  border: '#404040',
-  disabled: '#555555',
-  overlay: 'rgba(0, 0, 0, 0.7)',
+  background: '#000000',
+  surface: 'rgba(28, 28, 30, 0.85)',
+  surfaceSolid: '#1C1C1E',
+  glassBackground: 'rgba(28, 28, 30, 0.7)',
+  primary: '#0A84FF',
+  primaryDark: '#0051D5',
+  secondary: '#64D2FF',
+  success: '#30D158',
+  warning: '#FF9F0A',
+  danger: '#FF453A',
+  text: '#FFFFFF',
+  textSecondary: '#EBEBF5',
+  textTertiary: '#8E8E93',
+  border: 'rgba(235, 235, 245, 0.12)',
+  disabled: '#48484A',
+  overlay: 'rgba(0, 0, 0, 0.6)',
   cardShadow: 'rgba(0, 0, 0, 0.3)',
+  blur: 'rgba(28, 28, 30, 0.8)',
 };
 
 export const highContrastTheme = {
