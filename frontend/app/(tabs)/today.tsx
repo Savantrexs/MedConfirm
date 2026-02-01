@@ -16,7 +16,6 @@ import { useTheme, spacing, typography } from '../../utils/theme';
 import { Medication } from '../../utils/storage';
 
 export default function HomeScreen() {
-  const router = useRouter();
   const theme = useTheme();
   const { medications, intakeLogs, refreshData, loading } = useApp();
   const [selectedMedication, setSelectedMedication] = useState<Medication | null>(null);
