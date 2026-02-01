@@ -8,11 +8,10 @@ import {
   Alert,
   Share,
 } from 'react-native';
-import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
-import { useApp } from '../contexts/AppContext';
-import { useTheme, spacing, borderRadius, typography, shadows } from '../utils/theme';
+import { useApp } from '../../contexts/AppContext';
+import { useTheme, spacing, borderRadius, typography, shadows } from '../../utils/theme';
 
 export default function SettingsScreen() {
   const router = useRouter();
