@@ -1,22 +1,25 @@
-// Theme and design system
+// Theme and design system - Apple-style glassmorphism
 import { useColorScheme } from 'react-native';
 
 export const lightTheme = {
-  background: '#F5F7FA',
-  surface: '#FFFFFF',
-  primary: '#4A90E2',
-  primaryDark: '#357ABD',
-  secondary: '#7FB3D5',
-  success: '#5CB85C',
-  warning: '#F0AD4E',
-  danger: '#D9534F',
-  text: '#2C3E50',
-  textSecondary: '#7F8C8D',
-  textLight: '#95A5A6',
-  border: '#E1E8ED',
-  disabled: '#BDC3C7',
-  overlay: 'rgba(0, 0, 0, 0.5)',
-  cardShadow: 'rgba(0, 0, 0, 0.08)',
+  background: '#F2F2F7',
+  surface: 'rgba(255, 255, 255, 0.85)',
+  surfaceSolid: '#FFFFFF',
+  glassBackground: 'rgba(255, 255, 255, 0.7)',
+  primary: '#007AFF',
+  primaryDark: '#0051D5',
+  secondary: '#5AC8FA',
+  success: '#34C759',
+  warning: '#FF9500',
+  danger: '#FF3B30',
+  text: '#000000',
+  textSecondary: '#3C3C43',
+  textTertiary: '#8E8E93',
+  border: 'rgba(60, 60, 67, 0.12)',
+  disabled: '#C7C7CC',
+  overlay: 'rgba(0, 0, 0, 0.4)',
+  cardShadow: 'rgba(0, 0, 0, 0.05)',
+  blur: 'rgba(255, 255, 255, 0.8)',
 };
 
 export const darkTheme = {
