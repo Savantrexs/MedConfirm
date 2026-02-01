@@ -210,8 +210,11 @@ export default function SettingsScreen() {
               <Text style={[styles.infoSubtitle, { color: theme.textSecondary }]}>
                 Track medications • Prevent double-dosing
               </Text>
-              <Text style={[styles.disclaimer, { color: theme.textLight }]}>
+              <Text style={[styles.disclaimer, { color: theme.textTertiary }]}>
                 This app is for tracking only and does not provide medical advice.
+              </Text>
+              <Text style={[styles.branding, { color: theme.textTertiary }]}>
+                A product by Savantrexs
               </Text>
             </View>
           </View>
