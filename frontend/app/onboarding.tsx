@@ -102,9 +102,15 @@ export default function OnboardingScreen() {
         </View>
 
         <View style={styles.disclaimer}>
-          <Ionicons name="information-circle-outline" size={20} color={theme.textLight} />
-          <Text style={[styles.disclaimerText, { color: theme.textLight }]}>
+          <Ionicons name="information-circle-outline" size={20} color={theme.textTertiary} />
+          <Text style={[styles.disclaimerText, { color: theme.textTertiary }]}>
             This app is for tracking only and does not provide medical advice.
+          </Text>
+        </View>
+
+        <View style={styles.branding}>
+          <Text style={[styles.brandingText, { color: theme.textTertiary }]}>
+            A product by Savantrexs
           </Text>
         </View>
       </View>
