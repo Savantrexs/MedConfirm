@@ -44,43 +44,23 @@ export default function HomeScreen() {
     <SafeAreaView style={[styles.container, { backgroundColor: theme.background }]} edges={['top']}>
       <View style={styles.header}>
         <View>
-          <Text style={[styles.headerTitle, { color: theme.text }]}>MedConfirm</Text>
+          <Text style={[styles.headerTitle, { color: theme.text }]}>Today</Text>
           <Text style={[styles.headerSubtitle, { color: theme.textSecondary }]}>
             {format(new Date(), 'EEEE, MMM d')}
           </Text>
-        </View>
-        <View style={styles.headerActions}>
-          <TouchableOpacity
-            style={styles.iconButton}
-            onPress={() => router.push('/history')}
-          >
-            <Ionicons name="time-outline" size={24} color={theme.text} />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.iconButton}
-            onPress={() => router.push('/settings')}
-          >
-            <Ionicons name="settings-outline" size={24} color={theme.text} />
-          </TouchableOpacity>
         </View>
       </View>
 
       <ScrollView
         style={styles.content}
         showsVerticalScrollIndicator={false}
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
-        }
+        refreshControl={\n          <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />\n        }
       >
         {activeMedications.length === 0 ? (
           <View style={styles.emptyState}>
-            <Ionicons name="medical-outline" size={64} color={theme.textLight} />
-            <Text style={[styles.emptyTitle, { color: theme.text }]}>
-              No Medications Yet
-            </Text>
-            <Text style={[styles.emptyText, { color: theme.textSecondary }]}>
-              Add your first medication to start tracking
-            </Text>
+            <Ionicons name="medical-outline" size={64} color={theme.textTertiary} />
+            <Text style={[styles.emptyTitle, { color: theme.text }]}>\n              No Medications Yet\n            </Text>
+            <Text style={[styles.emptyText, { color: theme.textSecondary }]}>\n              Tap Add tab to create your first medication\n            </Text>
           </View>
         ) : (
           <View style={styles.medicationsList}>
@@ -90,7 +70,7 @@ export default function HomeScreen() {
                 medication={medication}
                 intakeLogs={intakeLogs}
                 onMarkTaken={() => handleMarkTaken(medication)}
-                onViewHistory={() => router.push(`/history?medicationId=${medication.id}`)}
+                onViewHistory={() => {}}
               />
             ))}
           </View>
@@ -98,16 +78,6 @@ export default function HomeScreen() {
 
         <View style={styles.bottomPadding} />
       </ScrollView>
-
-      <View style={[styles.fab, { backgroundColor: theme.primary }]}>
-        <TouchableOpacity
-          style={styles.fabButton}
-          onPress={() => router.push('/add-medication')}
-          activeOpacity={0.8}
-        >
-          <Ionicons name="add" size={32} color="#FFFFFF" />
-        </TouchableOpacity>
-      </View>
 
       <MarkTakenModal
         visible={modalVisible}
