@@ -1,31 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useRouter, useFocusEffect } from 'expo-router';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import { useTheme } from '../../utils/theme';
 
-// This redirects to add-medication when Add tab is pressed, then goes back to Today
+// This redirects to add-medication modal when Add tab is pressed
 export default function AddRedirect() {
   const router = useRouter();
   const theme = useTheme();
-  const [hasRedirected, setHasRedirected] = useState(false);
 
   useFocusEffect(
     React.useCallback(() => {
-      // Only redirect once when this screen is focused
-      if (!hasRedirected) {
-        setHasRedirected(true);
-        const timer = setTimeout(() => {
-          router.push('/add-medication');
-          // After opening the modal, go back to Today tab
-          setTimeout(() => {
-            router.replace('/(tabs)/today');
-          }, 100);
-        }, 50);
+      // Redirect to add-medication modal
+      const timer = setTimeout(() => {
+        router.push('/add-medication');
+      }, 100);
 
-        return () => clearTimeout(timer);
-      }
-      return () => {};
-    }, [hasRedirected])
+      return () => clearTimeout(timer);
+    }, [])
   );
 
   return (
