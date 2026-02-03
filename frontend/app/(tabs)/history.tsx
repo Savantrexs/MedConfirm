@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -15,8 +15,9 @@ import { groupLogsByDate, getDateLabel, formatDateTime } from '../../utils/medic
 
 export default function HistoryScreen() {
   const theme = useTheme();
-  const { intakeLogs, medications, deleteIntakeLog } = useApp();
+  const { intakeLogs, medications, deleteIntakeLog, refreshData } = useApp();
   const [selectedMedicationId, setSelectedMedicationId] = useState<string | null>(null);
+  const [key, setKey] = useState(0); // Force refresh key
 
   const filteredLogs = selectedMedicationId
     ? intakeLogs.filter(log => log.medicationId === selectedMedicationId)
@@ -30,7 +31,7 @@ export default function HistoryScreen() {
     return med?.name || 'Unknown';
   };
 
-  const handleDeleteLog = (logId: string) => {
+  const handleDeleteLog = async (logId: string) => {
     Alert.alert(
       'Delete Entry',
       'Are you sure you want to delete this intake log?',
@@ -39,7 +40,11 @@ export default function HistoryScreen() {
         {
           text: 'Delete',
           style: 'destructive',
-          onPress: () => deleteIntakeLog(logId),
+          onPress: async () => {
+            await deleteIntakeLog(logId);
+            await refreshData();
+            setKey(prev => prev + 1); // Force re-render
+          },
         },
       ]
     );
