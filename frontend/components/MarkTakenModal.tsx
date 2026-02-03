@@ -68,8 +68,20 @@ export const MarkTakenModal: React.FC<MarkTakenModalProps> = ({
 
     try {
       await addIntakeLog(log);
+      
+      // Cancel repeat notifications for this dose
+      const nextDose = getNextDoseTime(medication);
+      if (nextDose && nextDose.isToday) {
+        await cancelRepeatNotificationsForDose(medication.id, nextDose.time);
+      }
+      
       setNote('');
       onClose();
+      
+      // Force refresh the data
+      setTimeout(() => {
+        window.location.reload();
+      }, 100);
     } catch (error) {
       Alert.alert('Error', 'Failed to log intake');
     } finally {
