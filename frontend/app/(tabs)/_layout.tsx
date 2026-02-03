@@ -16,12 +16,16 @@ export default function TabsLayout() {
         tabBarActiveTintColor: theme.primary,
         tabBarInactiveTintColor: theme.textTertiary,
         tabBarStyle: {
-          backgroundColor: theme.surface,
+          backgroundColor: theme.surfaceSolid,
           borderTopColor: theme.border,
           borderTopWidth: 0.5,
           height: Platform.OS === 'ios' ? 88 : 68,
           paddingBottom: Platform.OS === 'ios' ? 28 : 8,
           paddingTop: 8,
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          right: 0,
         },
         tabBarLabelStyle: {
           fontSize: 10,
@@ -38,7 +42,7 @@ export default function TabsLayout() {
         options={{
           title: 'Today',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="today-outline" size={size} color={color} />
+            <Ionicons name="today-outline" size={24} color={color} />
           ),
         }}
       />
@@ -47,7 +51,7 @@ export default function TabsLayout() {
         options={{
           title: 'History',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="time-outline" size={size} color={color} />
+            <Ionicons name="time-outline" size={24} color={color} />
           ),
         }}
       />
@@ -56,7 +60,7 @@ export default function TabsLayout() {
         options={{
           title: 'Add',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="add-circle" size={size} color={color} />
+            <Ionicons name="add-circle" size={28} color={color} />
           ),
         }}
       />
@@ -65,7 +69,7 @@ export default function TabsLayout() {
         options={{
           title: 'Settings',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="settings-outline" size={size} color={color} />
+            <Ionicons name="settings-outline" size={24} color={color} />
           ),
         }}
       />
