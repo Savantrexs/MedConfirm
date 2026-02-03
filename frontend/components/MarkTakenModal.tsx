@@ -16,7 +16,7 @@ import { useApp } from '../contexts/AppContext';
 import { Button } from '../components/Button';
 import { useTheme, spacing, borderRadius, typography, shadows } from '../utils/theme';
 import { Medication } from '../utils/storage';
-import { wasRecentlyTaken } from '../utils/medicationLogic';
+import { wasRecentlyTaken, getNextDoseTime } from '../utils/medicationLogic';
 import { cancelRepeatNotificationsForDose } from '../utils/notifications';
 
 interface MarkTakenModalProps {
