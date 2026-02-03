@@ -2,12 +2,12 @@
 import { useColorScheme } from 'react-native';
 
 export const lightTheme = {
-  background: '#F2F2F7',
-  surface: 'rgba(255, 255, 255, 0.85)',
+  background: '#F5F5F5',
+  surface: 'rgba(255, 255, 255, 0.90)',
   surfaceSolid: '#FFFFFF',
-  glassBackground: 'rgba(255, 255, 255, 0.7)',
-  primary: '#007AFF',
-  primaryDark: '#0051D5',
+  glassBackground: 'rgba(255, 255, 255, 0.75)',
+  primary: '#34C759',
+  primaryDark: '#248A3D',
   secondary: '#5AC8FA',
   success: '#34C759',
   warning: '#FF9500',
