@@ -16,6 +16,7 @@ export interface Medication {
   daysOfWeek?: number[]; // 0-6 (Sun-Sat), default all days
   startDate?: string;
   isActive: boolean;
+  reminderMode?: 'once' | 'every5' | 'every10' | 'every15'; // Notification repeat mode
 }
 
 export interface IntakeLog {
