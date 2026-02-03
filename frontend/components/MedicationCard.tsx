@@ -95,7 +95,7 @@ export const MedicationCard: React.FC<MedicationCardProps> = ({
         )}
         {lastTaken && (
           <View style={styles.timeRow}>
-            <Ionicons name="checkmark-circle" size={18} color={theme.success} />
+            <Ionicons name="checkmark-circle" size={18} color="#007AFF" />
             <View style={styles.timeContent}>
               <Text style={[styles.timeLabel, { color: theme.textTertiary }]}>Last taken</Text>
               <Text style={[styles.timeValue, { color: theme.text }]}>
