@@ -146,8 +146,17 @@ export default function AddEditMedicationScreen() {
     try {
       await addMedication(medication);
       await refreshData();
-      Alert.alert('Success', 'Medication added successfully!');
-      router.back();
+      
+      // Show success message
+      Alert.alert('Success', 'Medication added!', [
+        {
+          text: 'OK',
+          onPress: () => {
+            // Navigate back to Today tab
+            router.replace('/(tabs)/today');
+          },
+        },
+      ]);
     } catch (error) {
       Alert.alert('Error', 'Failed to save medication');
       setSaving(false);
