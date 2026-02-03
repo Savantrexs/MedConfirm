@@ -22,7 +22,7 @@ import { Medication } from '../utils/storage';
 export default function AddEditMedicationScreen() {
   const router = useRouter();
   const theme = useTheme();
-  const { addMedication, updateMedication, adSlots, medications, unlockAdSlot } = useApp();
+  const { addMedication, medications, adSlots, unlockAdSlot, refreshData } = useApp();
   
   const [name, setName] = useState('');
   const [dosageText, setDosageText] = useState('');
@@ -30,6 +30,7 @@ export default function AddEditMedicationScreen() {
   const [times, setTimes] = useState<string[]>(['09:00']);
   const [selectedDays, setSelectedDays] = useState<number[]>([0, 1, 2, 3, 4, 5, 6]);
   const [isActive, setIsActive] = useState(true);
+  const [reminderMode, setReminderMode] = useState<'once' | 'every5' | 'every10' | 'every15'>('once');
   const [saving, setSaving] = useState(false);
 
   const daysOfWeek = [
@@ -40,6 +41,13 @@ export default function AddEditMedicationScreen() {
     { label: 'Thu', value: 4 },
     { label: 'Fri', value: 5 },
     { label: 'Sat', value: 6 },
+  ];
+
+  const reminderModes = [
+    { label: 'Once', value: 'once' as const },
+    { label: 'Every 5 min', value: 'every5' as const },
+    { label: 'Every 10 min', value: 'every10' as const },
+    { label: 'Every 15 min', value: 'every15' as const },
   ];
 
   const toggleDay = (day: number) => {
@@ -132,10 +140,13 @@ export default function AddEditMedicationScreen() {
       timesPerDay: times.sort(),
       daysOfWeek: selectedDays,
       isActive,
+      reminderMode,
     };
 
     try {
       await addMedication(medication);
+      await refreshData();
+      Alert.alert('Success', 'Medication added successfully!');
       router.back();
     } catch (error) {
       Alert.alert('Error', 'Failed to save medication');
@@ -163,7 +174,7 @@ export default function AddEditMedicationScreen() {
             <TextInput
               style={[styles.input, { backgroundColor: theme.background, color: theme.text, borderColor: theme.border }]}
               placeholder="e.g., Aspirin"
-              placeholderTextColor={theme.textLight}
+              placeholderTextColor={theme.textTertiary}
               value={name}
               onChangeText={setName}
             />
@@ -174,7 +185,7 @@ export default function AddEditMedicationScreen() {
             <TextInput
               style={[styles.input, { backgroundColor: theme.background, color: theme.text, borderColor: theme.border }]}
               placeholder="e.g., 500mg"
-              placeholderTextColor={theme.textLight}
+              placeholderTextColor={theme.textTertiary}
               value={dosageText}
               onChangeText={setDosageText}
             />
@@ -185,7 +196,7 @@ export default function AddEditMedicationScreen() {
             <TextInput
               style={[styles.input, styles.textArea, { backgroundColor: theme.background, color: theme.text, borderColor: theme.border }]}
               placeholder="e.g., Take after food"
-              placeholderTextColor={theme.textLight}
+              placeholderTextColor={theme.textTertiary}
               value={instructions}
               onChangeText={setInstructions}
               multiline
@@ -202,7 +213,7 @@ export default function AddEditMedicationScreen() {
                   value={time}
                   onChangeText={(value) => updateTime(index, value)}
                   placeholder="HH:MM"
-                  placeholderTextColor={theme.textLight}
+                  placeholderTextColor={theme.textTertiary}
                 />
                 {times.length > 1 && (
                   <TouchableOpacity
@@ -249,6 +260,48 @@ export default function AddEditMedicationScreen() {
                     ]}
                   >
                     {day.label}
+                  </Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+          </View>
+
+          <View style={[styles.section, { backgroundColor: theme.surface }, shadows.small]}>
+            <Text style={[styles.label, { color: theme.text }]}>Reminder Behavior *</Text>
+            <Text style={[styles.helpText, { color: theme.textSecondary }]}>
+              Choose how often you want to be reminded until you mark this medication as taken
+            </Text>
+            <View style={styles.reminderContainer}>
+              {reminderModes.map((mode) => (
+                <TouchableOpacity
+                  key={mode.value}
+                  style={[
+                    styles.reminderButton,
+                    {
+                      backgroundColor: reminderMode === mode.value
+                        ? theme.primary
+                        : theme.background,
+                      borderColor: reminderMode === mode.value ? theme.primary : theme.border,
+                    },
+                  ]}
+                  onPress={() => setReminderMode(mode.value)}
+                  activeOpacity={0.7}
+                >
+                  <View style={styles.radioOuter}>
+                    {reminderMode === mode.value && (
+                      <View style={[styles.radioInner, { backgroundColor: theme.primary }]} />
+                    )}
+                  </View>
+                  <Text
+                    style={[
+                      styles.reminderText,
+                      {
+                        color: reminderMode === mode.value ? '#FFFFFF' : theme.text,
+                        fontWeight: reminderMode === mode.value ? '600' : '400',
+                      },
+                    ]}
+                  >
+                    {mode.label}
                   </Text>
                 </TouchableOpacity>
               ))}
@@ -310,7 +363,7 @@ const styles = StyleSheet.create({
     padding: spacing.xs,
   },
   headerTitle: {
-    ...typography.h2,
+    ...typography.title2,
   },
   placeholder: {
     width: 40,
@@ -325,9 +378,12 @@ const styles = StyleSheet.create({
     marginBottom: spacing.md,
   },
   label: {
-    ...typography.body,
-    fontWeight: '600',
+    ...typography.headline,
     marginBottom: spacing.sm,
+  },
+  helpText: {
+    ...typography.caption1,
+    marginBottom: spacing.md,
   },
   input: {
     borderWidth: 1,
@@ -381,8 +437,36 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   dayText: {
-    ...typography.caption,
+    ...typography.caption1,
     fontWeight: '600',
+  },
+  reminderContainer: {
+    gap: spacing.sm,
+  },
+  reminderButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: spacing.md,
+    borderRadius: borderRadius.md,
+    borderWidth: 2,
+  },
+  radioOuter: {
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    borderWidth: 2,
+    borderColor: '#FFFFFF',
+    marginRight: spacing.sm,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  radioInner: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+  },
+  reminderText: {
+    ...typography.body,
   },
   toggleRow: {
     flexDirection: 'row',
