@@ -105,6 +105,12 @@ export default function HistoryScreen() {
     <SafeAreaView style={[styles.container, { backgroundColor: theme.background }]} edges={['top']}>
       <View style={[styles.header, { borderBottomColor: theme.border }]}>
         <Text style={[styles.headerTitle, { color: theme.text }]}>History</Text>
+        <TouchableOpacity
+          onPress={handleExportCSV}
+          style={styles.exportButton}
+        >
+          <Ionicons name="download-outline" size={22} color={theme.primary} />
+        </TouchableOpacity>
       </View>
 
       {medications.length > 0 && (
