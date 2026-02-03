@@ -3,19 +3,16 @@ import { useRouter } from 'expo-router';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import { useTheme } from '../../utils/theme';
 
-// This is a redirect screen - tapping the Add tab navigates to the modal
+// This redirects to add-medication when Add tab is pressed
 export default function AddRedirect() {
   const router = useRouter();
   const theme = useTheme();
 
   useEffect(() => {
-    // Navigate to add-medication modal
-    router.push('/add-medication');
-    
-    // After a short delay, go back to today tab
+    // Small delay to let the tab switch animation complete
     const timer = setTimeout(() => {
-      router.replace('/(tabs)/today');
-    }, 100);
+      router.push('/add-medication');
+    }, 50);
 
     return () => clearTimeout(timer);
   }, []);
