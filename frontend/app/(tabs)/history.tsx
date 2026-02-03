@@ -41,13 +41,61 @@ export default function HistoryScreen() {
           text: 'Delete',
           style: 'destructive',
           onPress: async () => {
-            await deleteIntakeLog(logId);
-            await refreshData();
-            setKey(prev => prev + 1); // Force re-render
+            try {
+              await deleteIntakeLog(logId);
+              await refreshData();
+              // Force immediate re-render
+              setKey(prev => prev + 1);
+            } catch (error) {
+              Alert.alert('Error', 'Failed to delete log');
+            }
           },
         },
       ]
     );
+  };
+
+  const handleExportCSV = async () => {
+    try {
+      // Generate CSV
+      let csv = 'Date,Time,Medication,Dosage,Note\n';
+      
+      const sortedLogs = [...intakeLogs].sort((a, b) => 
+        new Date(b.takenAt).getTime() - new Date(a.takenAt).getTime()
+      );
+      
+      for (const log of sortedLogs) {
+        const medication = medications.find(m => m.id === log.medicationId);
+        const date = new Date(log.takenAt);
+        const dateStr = format(date, 'yyyy-MM-dd');
+        const timeStr = format(date, 'HH:mm:ss');
+        const name = medication?.name || 'Unknown';
+        const dosage = medication?.dosageText || '';
+        const note = log.note || '';
+        
+        csv += `${dateStr},${timeStr},${name},"${dosage}","${note}"\n`;
+      }
+
+      // For web, trigger download
+      if (Platform.OS === 'web') {
+        const blob = new Blob([csv], { type: 'text/csv' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `medconfirm-export-${format(new Date(), 'yyyy-MM-dd')}.csv`;
+        a.click();
+        URL.revokeObjectURL(url);
+        Alert.alert('Success', 'CSV exported successfully!');
+      } else {
+        // For mobile, use Share
+        await Share.share({
+          message: csv,
+          title: 'MedConfirm Export',
+        });
+      }
+    } catch (error) {
+      Alert.alert('Error', 'Failed to export data');
+    }
   };
 
   return (
