@@ -149,6 +149,7 @@ export const initializeSampleData = async (): Promise<void> => {
         timesPerDay: ['09:00'],
         daysOfWeek: [0, 1, 2, 3, 4, 5, 6],
         isActive: true,
+        reminderMode: 'once',
       },
       {
         id: 'sample-2',
@@ -158,6 +159,7 @@ export const initializeSampleData = async (): Promise<void> => {
         timesPerDay: ['08:00', '20:00'],
         daysOfWeek: [0, 1, 2, 3, 4, 5, 6],
         isActive: true,
+        reminderMode: 'every5',
       },
     ];
     await saveMedications(sampleMedications);
