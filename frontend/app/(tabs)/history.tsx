@@ -109,10 +109,10 @@ export default function HistoryScreen() {
         </ScrollView>
       )}
 
-      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+      <ScrollView style={styles.content} showsVerticalScrollIndicator={false} key={key}>
         {dateKeys.length === 0 ? (
           <View style={styles.emptyState}>
-            <Ionicons name="clipboard-outline" size={64} color={theme.textLight} />
+            <Ionicons name="clipboard-outline" size={64} color={theme.textTertiary} />
             <Text style={[styles.emptyTitle, { color: theme.text }]}>No History Yet</Text>
             <Text style={[styles.emptyText, { color: theme.textSecondary }]}>
               Your medication intake logs will appear here
