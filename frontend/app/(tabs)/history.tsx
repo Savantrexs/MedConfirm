@@ -6,9 +6,12 @@ import {
   ScrollView,
   TouchableOpacity,
   Alert,
+  Share,
+  Platform,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
+import { format } from 'date-fns';
 import { useApp } from '../../contexts/AppContext';
 import { useTheme, spacing, borderRadius, typography, shadows } from '../../utils/theme';
 import { groupLogsByDate, getDateLabel, formatDateTime } from '../../utils/medicationLogic';
