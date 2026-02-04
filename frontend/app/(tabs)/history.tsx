@@ -229,15 +229,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: spacing.md,
-    paddingVertical: spacing.md,
+    paddingHorizontal: spacing.lg,
+    paddingVertical: spacing.lg,
     borderBottomWidth: 1,
   },
   backButton: {
     padding: spacing.xs,
   },
   headerTitle: {
-    ...typography.h2,
+    ...typography.sectionHeading,
+  },
+  exportButton: {
+    padding: spacing.sm,
   },
   placeholder: {
     width: 40,
