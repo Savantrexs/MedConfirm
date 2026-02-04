@@ -11,7 +11,7 @@ import { format } from 'date-fns';
 import { useApp } from '../../contexts/AppContext';
 import { MedicationCard } from '../../components/MedicationCard';
 import { MarkTakenModal } from '../../components/MarkTakenModal';
-import { useTheme, spacing, typography } from '../../utils/theme';
+import { useTheme, spacing, typography, borderRadius } from '../../utils/theme';
 import { Medication } from '../../utils/storage';
 import { getDoseStatus } from '../../utils/medicationLogic';
 
