@@ -1,0 +1,26 @@
+diff --git a/frontend/app/(tabs)/history.tsx b/frontend/app/(tabs)/history.tsx
+index 898d93d..ca1385f 100644
+--- a/frontend/app/(tabs)/history.tsx
++++ b/frontend/app/(tabs)/history.tsx
+@@ -229,15 +229,18 @@ const styles = StyleSheet.create({
+     flexDirection: 'row',
+     alignItems: 'center',
+     justifyContent: 'space-between',
+-    paddingHorizontal: spacing.md,
+-    paddingVertical: spacing.md,
++    paddingHorizontal: spacing.lg,
++    paddingVertical: spacing.lg,
+     borderBottomWidth: 1,
+   },
+   backButton: {
+     padding: spacing.xs,
+   },
+   headerTitle: {
+-    ...typography.h2,
++    ...typography.sectionHeading,
++  },
++  exportButton: {
++    padding: spacing.sm,
+   },
+   placeholder: {
+     width: 40,
